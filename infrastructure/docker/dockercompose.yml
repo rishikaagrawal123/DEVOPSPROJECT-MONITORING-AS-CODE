@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: ../../src/sample-app
+    container_name: sample_app
+    ports:
+      - "5000:5000"
+
+  nagios:
+    image: jasonrivers/nagios:latest
+    container_name: nagios_server
+    ports:
+      - "8080:80"
+    volumes:
+      - ../../monitoring/nagios:/opt/nagios/etc/objects
+    depends_on:
+      - app
