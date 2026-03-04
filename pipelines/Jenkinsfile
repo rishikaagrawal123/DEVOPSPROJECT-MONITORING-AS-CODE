@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/yourusername/devopsproject-monitoring-as-code.git'
+            }
+        }
+
+        stage('Build and Deploy') {
+            steps {
+                sh 'docker-compose -f infrastructure/docker/docker-compose.yml up -d --build'
+            }
+        }
+
+    }
+}
