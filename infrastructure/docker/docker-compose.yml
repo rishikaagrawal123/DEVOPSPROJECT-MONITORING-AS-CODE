@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: ../../src/sample-app
+    container_name: sample_app
+    ports:
+      - "5000:5000"
+    networks:
+      - monitoring_network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../../monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    depends_on:
+      - app
+    networks:
+      - monitoring_network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ../../monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ../../monitoring/grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    depends_on:
+      - prometheus
+    networks:
+      - monitoring_network
+
+networks:
+  monitoring_network:
