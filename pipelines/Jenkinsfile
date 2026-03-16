@@ -5,7 +5,15 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/yourusername/devopsproject-monitoring-as-code.git'
+                git 'https://github.com/rishikaagrawal123/DEVOPSPROJECT-MONITORING-AS-CODE'
+            }
+        }
+
+        stage('Configuration Management') {
+            steps {
+                // In a real environment, this would run puppet apply natively on the host
+                // For this project presentation, we're demonstrating it using Puppet Docker container
+                sh 'docker run --rm -v ${WORKSPACE}:/code -w /code puppet/puppet-agent-ubuntu apply infrastructure/puppet/manifests/monitoring.pp'
             }
         }
 
@@ -16,4 +24,5 @@ pipeline {
         }
 
     }
+
 }

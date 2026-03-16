@@ -1,0 +1,70 @@
+
+
+services:
+
+  app:
+    build: ../../src/sample-app
+    container_name: sample_app
+    ports:
+      - "5000:5000"
+    networks:
+      - monitoring_network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../../monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    depends_on:
+      - app
+    networks:
+      - monitoring_network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../monitoring/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ../../monitoring/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ../../monitoring/grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+    depends_on:
+      - prometheus
+    networks:
+      - monitoring_network
+
+  backend:
+    build: ../../src/backend
+    container_name: monitoring_backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ../../monitoring/prometheus/prometheus.yml:/monitoring/prometheus/prometheus.yml
+      - ../../infrastructure/docker/docker-compose.yml:/infrastructure/docker/docker-compose.yml
+      - ../../infrastructure/puppet/manifests/monitoring.pp:/infrastructure/puppet/manifests/monitoring.pp
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - monitoring_network
+
+  frontend:
+    build: ../../src/frontend
+    container_name: monitoring_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - monitoring_network
+
+networks:
+  monitoring_network:

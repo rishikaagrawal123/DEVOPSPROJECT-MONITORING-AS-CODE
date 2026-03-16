@@ -29,7 +29,6 @@ This project implements a **Monitoring-as-Code framework** where monitoring conf
 * Automated monitoring setup using configuration files
 * CI/CD pipeline integration for automated deployments
 * Docker-based containerized environment
-* Nagios-based monitoring configuration
 * Alert rules and dashboard configurations stored in code
 
 ---
@@ -56,7 +55,7 @@ Technology Stack
 
 **Configuration Management:** Puppet / Ansible (if applicable)
 
-**Monitoring:** Nagios / Prometheus
+**Monitoring:** Prometheus
 
 ---
 
@@ -126,7 +125,6 @@ devopsproject-monitoring-as-code/
 │   └── .github/workflows/
 │
 ├── monitoring/
-│   ├── nagios/
 │   ├── alerts/
 │   └── dashboards/
 │
@@ -161,7 +159,6 @@ The project implements **Monitoring-as-Code** using configuration files.
 
 ### Monitoring Tools
 
-* Nagios for system monitoring
 * Alert rules defined in configuration files
 * Monitoring dashboards stored in version control
 
