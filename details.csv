@@ -51,6 +51,7 @@ devopsproject[PROJECTNAME]/
 │   └── testdata/                      Test data
 │
 ├── monitoring/                         Monitoring configurations
+│   ├── nagios/                         Nagios configurations
 │   ├── alerts/                         Alert rules
 │   └── dashboards/                     Monitoring dashboards
 │
@@ -111,6 +112,7 @@ Difficulty: Intermediate
  Orchestration: Kubernetes (if applicable)
  Configuration Management: Puppet/Ansible (if applicable)
  Monitoring: Prometheus (if applicable)
+ Monitoring: Nagios/Prometheus (if applicable)
 ""
 ""
 ""
@@ -203,6 +205,7 @@ API_KEY=your_api_key_here
   Monitoring & Logging
 ""
  Monitoring Setup
+ Nagios: Configured for system monitoring
  Custom Metrics: Applicationspecific metrics
  Alerts: Email/Slack notifications
 ""
@@ -448,6 +451,12 @@ services:
        "9090:9090"
     volumes:
        ./monitoring/prometheus:/etc/prometheus
+  monitoring:
+    image: nagios/nagios:latest
+    ports:
+"       ""8081:80"""
+    volumes:
+       ./monitoring/nagios:/opt/nagios/etc
 ""
 volumes:
   postgres_data:
