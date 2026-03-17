@@ -111,6 +111,7 @@ Difficulty: Intermediate
  Containerization: Docker
  Orchestration: Kubernetes (if applicable)
  Configuration Management: Puppet/Ansible (if applicable)
+ Monitoring: Prometheus (if applicable)
  Monitoring: Nagios/Prometheus (if applicable)
 ""
 ""
@@ -444,6 +445,12 @@ services:
     ports:
 "       ""5432:5432"""
 ""
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+       "9090:9090"
+    volumes:
+       ./monitoring/prometheus:/etc/prometheus
   monitoring:
     image: nagios/nagios:latest
     ports:

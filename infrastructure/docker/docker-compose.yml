@@ -1,3 +1,4 @@
+
 version: '3.8'
 
 services:
@@ -36,8 +37,33 @@ services:
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_SECURITY_ALLOW_EMBEDDING=true
     depends_on:
       - prometheus
+    networks:
+      - monitoring_network
+
+  backend:
+    build: ../../src/backend
+    container_name: monitoring_backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ../../monitoring/prometheus/prometheus.yml:/monitoring/prometheus/prometheus.yml
+      - ../../infrastructure/docker/docker-compose.yml:/infrastructure/docker/docker-compose.yml
+      - ../../infrastructure/puppet/manifests/monitoring.pp:/infrastructure/puppet/manifests/monitoring.pp
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - monitoring_network
+
+  frontend:
+    build: ../../src/frontend
+    container_name: monitoring_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
     networks:
       - monitoring_network
 

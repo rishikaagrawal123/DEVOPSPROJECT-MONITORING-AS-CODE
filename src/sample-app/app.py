@@ -33,5 +33,6 @@ app.wsgi_app = DispatcherMiddleware(app.wsgi_app, {
     '/metrics': make_wsgi_app()
 })
 
+from werkzeug.serving import run_simple
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    run_simple("0.0.0.0", 5000, app.wsgi_app)
