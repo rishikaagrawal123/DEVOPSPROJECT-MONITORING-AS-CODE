@@ -1,475 +1,296 @@
- DevOps Monitoring-as-Code Framework
-
-Student Name: Rishika Agrawal
-Registration No: 23FE10CSE00026
-Course: CSE3253 DevOps [PE6]
-Semester: VI (2025–2026)
-Project Type: Monitoring & CI/CD Automation
-
-
- Project Overview
-
-Problem Statement
-
-Modern software systems require continuous monitoring to ensure reliability, performance, and availability. Traditional monitoring systems are often configured manually, which makes them difficult to maintain, reproduce, and version control.
-
-This project implements a **Monitoring-as-Code framework** where monitoring configurations such as alerts, dashboards, and monitoring rules are defined using code and managed through a version-controlled repository.
-
- Objectives
-
-* [ ] Implement monitoring configurations using code
-* [ ] Automate monitoring deployment through CI/CD pipelines
-* [ ] Integrate monitoring with containerized infrastructure
-* [ ] Demonstrate infrastructure and monitoring automation using DevOps practices
-
----
-
- Key Features
-
-* Automated monitoring setup using configuration files
-* CI/CD pipeline integration for automated deployments
-* Docker-based containerized environment
-* Alert rules and dashboard configurations stored in code
-
----
-
-Technology Stack
-
-## Core Technologies
-
-**Programming Language:** Python 
-**Framework:** Flask 
-**Database:**  None
-
----
-
-## DevOps Tools
-
-**Version Control:** Git
-
-**CI/CD:** Jenkins / GitHub Actions
-
-**Containerization:** Docker
-
-**Orchestration:** Kubernetes (if applicable)
-
-**Configuration Management:** Puppet / Ansible (if applicable)
-
-**Monitoring:** Prometheus
-# Monitoring-as-Code Framework
+# 🚀 Monitoring-as-Code Framework
 
 **Student Name:** Rishika Agrawal
 **Registration No:** 23FE10CSE00026
 **Course:** CSE3253 DevOps (PE6)
 **Semester:** VI (2025–2026)
 **Project Type:** Monitoring & CI/CD Automation
-**Difficulty:** Intermediate
 
 ---
 
-# Project Overview
+# 📌 Project Overview
 
-## Problem Statement
+## 🔴 Problem Statement
 
-Modern applications require continuous monitoring to ensure reliability, performance, and availability. Manual monitoring setup is time-consuming and error-prone. This project introduces a **Monitoring-as-Code framework** where monitoring infrastructure and configurations are defined in code and automatically deployed using DevOps tools.
+Modern software systems require continuous monitoring to ensure reliability, performance, and availability. Traditional monitoring approaches rely on manual configuration, which is time-consuming, error-prone, and difficult to scale.
 
-## Objectives
-
-* Automate monitoring infrastructure deployment using Infrastructure as Code.
-* Implement CI/CD pipeline for automated deployment.
-* Integrate monitoring tools such as Prometheus and Grafana for system metrics visualization.
-
-## Key Features
-
-* Automated monitoring deployment using **Docker Compose**
-* Infrastructure automation using **Puppet**
-* Metrics collection using **Prometheus**
-* Visualization dashboards using **Grafana**
-* CI/CD automation using **Jenkins**
+This project implements a **Monitoring-as-Code framework**, where monitoring configurations such as targets, dashboards, and infrastructure are defined as code and managed through version control.
 
 ---
 
-# Technology Stack
+## 🎯 Objectives
+
+* Automate monitoring infrastructure setup using code
+* Reduce manual configuration and human errors
+* Enable real-time monitoring and visualization
+* Integrate DevOps tools into a unified system
+* Provide a user-friendly monitoring interface
+* Ensure scalability and extensibility
+
+---
+
+# ⭐ Key Features
+
+* ⚙️ Automated monitoring setup using Docker Compose
+* 📊 Real-time monitoring using Prometheus & Grafana
+* 🔁 CI/CD integration using Jenkins
+* 🐳 Fully containerized architecture
+* 🧩 Infrastructure automation using Puppet
+* 🌐 User-friendly UI for monitoring control
+
+---
+
+# 🛠 Technology Stack
 
 ## Core Technologies
 
-Programming Language: Python
-Framework: Flask
-Database: None (Sample Application)
+* **Language:** Python
+* **Framework:** Flask
+* **Frontend:** React
+* **Backend:** Node.js
+
+---
 
 ## DevOps Tools
 
-Version Control: Git
-CI/CD: Jenkins
-Containerization: Docker
-Configuration Management: Puppet
-Monitoring: Prometheus & Grafana
+* **Version Control:** Git
+* **CI/CD:** Jenkins
+* **Containerization:** Docker
+* **Configuration Management:** Puppet
+* **Monitoring:** Prometheus & Grafana
 
 ---
 
-# Getting Started
+# 🏗 Project Architecture
 
-## Prerequisites
-
-* [ ] Docker Desktop v20.10+
-* [ ] Git 2.30+
-* [ ] Python 3.8+ / Node.js 16+ / Java 11+
-* [ ] Basic understanding of Docker and CI/CD pipelines
-* Docker Desktop v20.10+
-* Git 2.30+
-* Python 3.8+
-* Jenkins (for pipeline execution)
+```
+User → Frontend UI → Backend API → Puppet Automation → Docker Containers
+→ Prometheus (Metrics Collection) → Grafana (Visualization)
+```
 
 ---
 
-## Installation
+# ⚙️ Getting Started
 
-### 1. Clone the Repository
+## ✅ Prerequisites
 
-```bash
-git clone https://github.com/[username]/devopsproject-monitoring-as-code.git
-cd devopsproject-monitoring-as-code
-```
+* Docker Desktop (v20.10+)
+* Git
+* Node.js / Python
+* Basic knowledge of Docker
 
-### 2. Run the Application using Docker
+---
 
-```bash
-docker-compose up --build
-```
+## 🚀 Installation
 
-### 3. Access the Application
-
-Web Interface:
-http://localhost:8080
-
-Monitoring Dashboard:
-http://localhost:8081
-### 1. Clone the repository
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/rishikaagrawal123/devopsproject-monitoring-as-code.git
 cd devopsproject-monitoring-as-code
 ```
 
-### 2. Start the monitoring infrastructure
+---
+
+### 2. Run the Monitoring Stack
 
 ```bash
-docker-compose -f infrastructure/docker/docker-compose.yml up -d --build
+docker-compose -f infrastructure/docker/docker-compose.yml up --build
 ```
-
-### 3. Access services
-
-Application:
-http://localhost:5000
-
-Prometheus:
-http://localhost:9090
-
-Grafana Dashboard:
-http://localhost:3000
-
-Default Login
-Username: admin
-Password: admin
 
 ---
 
-# Project Structure
+### 3. Access Services
+
+| Service     | URL                   |
+| ----------- | --------------------- |
+| Application | http://localhost:5000 |
+| Frontend UI | http://localhost:5173 |
+| Backend API | http://localhost:4000 |
+| Prometheus  | http://localhost:9090 |
+| Grafana     | http://localhost:3000 |
+
+---
+
+### 🔐 Grafana Login
+
+```
+Username: admin
+Password: admin
+```
+
+---
+
+# 📂 Project Structure
 
 ```
 devopsproject-monitoring-as-code/
 │
-├── README.md
-├── .gitignore
-├── LICENSE
-│
 ├── src/
-│   ├── main/
-│   ├── config/
-│   └── scripts/
-│
-├── docs/
-│   ├── projectplan.md
-│   ├── designdocument.md
-│   └── userguide.md
+│   ├── sample-app/
+│   ├── backend/
+│   └── frontend/
 │
 ├── infrastructure/
 │   ├── docker/
-│   ├── kubernetes/
-│   ├── puppet/
-│   └── terraform/
-│
-├── pipelines/
-│   ├── Jenkinsfile
-│   └── .github/workflows/
+│   │   └── docker-compose.yml
+│   └── puppet/
 │
 ├── monitoring/
-│   ├── alerts/
-│   └── dashboards/
+│   ├── prometheus/
+│   │   └── prometheus.yml
+│   └── grafana/
 │
-├── tests/
-│   ├── unit/
-│   └── integration/
-│
-├── presentations/
-└── deliverables/
-devopsproject-monitoring-as-code
-│
-├── README.md
-├── src
-│   └── sample-app
-│       ├── app.py
-│       ├── Dockerfile
-│       └── requirements.txt
-│
-├── infrastructure
-│   ├── docker
-│   │   └── docker-compose.yml
-│   └── puppet
-│       └── manifests
-│           ├── monitoring.pp
-│           └── site.pp
-│
-├── pipelines
+├── pipelines/
 │   └── Jenkinsfile
 │
-├── monitoring
-│   ├── prometheus
-│   │   └── prometheus.yml
-│   ├── grafana
-│   │   ├── dashboards
-│   │   └── provisioning
-│   └── nagios
-│
-└── details.csv
+└── README.md
 ```
 
 ---
 
-# CI/CD Pipeline
+# 🔄 CI/CD Pipeline
 
-The CI/CD pipeline automates the software lifecycle using Jenkins or GitHub Actions.
-
-### Pipeline Stages
-
-1. Code Quality Check
-2. Build Application
-3. Run Unit Tests
-4. Security Scan
-5. Deploy to Staging
-6. Deploy to Production
-
----
-
-# Monitoring Setup
-
-The project implements **Monitoring-as-Code** using configuration files.
-
-### Monitoring Tools
-
-* Alert rules defined in configuration files
-* Monitoring dashboards stored in version control
-
-Alerts can be configured for:
-
-* High CPU usage
-* High memory usage
-* Service downtime
 ## Pipeline Stages
 
-1. **Checkout Code** – Pull latest source code from GitHub
-2. **Build Infrastructure** – Build Docker containers
-3. **Deploy Monitoring Stack** – Deploy Prometheus, Grafana and sample application
-4. **Monitoring Activation** – Prometheus collects metrics and Grafana visualizes them
+1. Code Checkout
+2. Build Docker Images
+3. Deploy Monitoring Stack
+4. Run Application
+5. Activate Monitoring
+6. Visualize Metrics
 
 ---
 
-# Monitoring & Logging
+# 📊 Monitoring Setup
 
-## Monitoring Setup
+## Prometheus
 
-Prometheus collects system and application metrics.
+* Collects metrics from application
+* Uses `/metrics` endpoint
+* Stores time-series data
 
-Grafana visualizes these metrics using dashboards.
+## Grafana
 
-### Metrics Monitored
+* Visualizes metrics
+* Provides dashboards
+* Real-time monitoring
+
+---
+
+## 📈 Metrics Monitored
 
 * CPU Usage
 * Memory Usage
-* Container Health
-* Application Performance Metrics
+* Request Rate
+* Application Performance
 
 ---
 
-# Docker Deployment
+# 🐳 Docker Commands
 
-Build Docker image:
+Start system:
 
 ```bash
-docker build -t devopsproject-monitoring .
+docker-compose up --build
 ```
 
-Run container:
+Check containers:
 
 ```bash
-docker run -p 8080:8080 devopsproject-monitoring
+docker ps
+```
+
+Stop system:
+
+```bash
+docker-compose down
 ```
 
 ---
 
-# Testing
+# 🔍 Monitoring Commands
 
-### Test Types
+Generate traffic:
 
-Unit Tests
-Integration Tests
-End-to-End Tests
+```bash
+for ($i=1; $i -le 20; $i++) { curl http://localhost:5000 > $null }
+```
+
+Check metrics:
+
+```bash
+curl http://localhost:5000/metrics
+```
+
+Prometheus health:
+
+```bash
+curl http://localhost:9090/-/healthy
+```
+
+---
+
+# 🧪 Testing
 
 Run tests:
 
 ```bash
-npm test
+pytest
 ```
 
 or
 
 ```bash
-pytest
-```
-## Build Docker Images
-
-```
-docker build -t monitoring-app .
-```
-
-## Run Containers
-
-```
-docker-compose -f infrastructure/docker/docker-compose.yml up -d
+npm test
 ```
 
 ---
 
-# Performance Metrics
+# ⚠️ Challenges
 
-| Metric               | Target  | Current |
-| -------------------- | ------- | ------- |
-| Build Time           | < 5 min | 2 min   |
-| Monitoring Latency   | < 5 sec | 3 sec   |
-| Deployment Frequency | Daily   | Manual  |
+* Integrating Prometheus with Docker containers
+* Automating monitoring setup
+* Managing configuration as code
 
 ---
 
-# Development Workflow
+# 📚 Learnings
 
-## Git Branching Strategy
-
-```
-main
- ├── develop
- │   ├── feature/monitoring
- │   ├── feature/dashboard
- │   └── hotfix/bugfix
-```
-
-## Commit Convention
-
-* feat: New feature
-* fix: Bug fix
-* docs: Documentation
-* refactor: Code improvement
-* chore: Maintenance
+* Monitoring-as-Code implementation
+* CI/CD automation
+* Docker-based deployment
+* DevOps tool integration
 
 ---
 
-# Security
-
-Security measures implemented:
+# 🔐 Security
 
 * Input validation
-* Secure environment variables
-* Dependency vulnerability scanning
+* Secure configurations
 * Container security scanning
 
-Example security scan:
+---
 
-```bash
-trivy image devopsproject-monitoring
-```
-## Security Measures
+# 🎥 Demo
 
-* Environment-based configuration
-* Secure container deployment
-* Dependency updates
-* Access control for monitoring dashboards
+* Local deployment using Docker Compose
+* Prometheus + Grafana dashboards
+* Real-time monitoring
 
 ---
 
-# Documentation
+# 🙏 Acknowledgment
 
-Technical Documentation:
+Course Instructor: **Mr. Dibakar Sinha**
 
-* System architecture
-* Monitoring configuration
-* CI/CD pipeline setup
+Open-source community and DevOps resources.
 
 ---
 
-# Demo
+# 📬 Contact
 
-Demo video is available in the **deliverables/** folder.
-
----
-
-# Challenges
-
-1. Integrating monitoring tools with containerized environments
-2. Automating monitoring deployment using CI/CD
-3. Managing monitoring configurations as code
-Demo Video:
-(To be added in deliverables folder)
-
-Live Demo:
-Local deployment via Docker Compose
-
----
-
-# Project Challenges
-
-1. Integrating Prometheus monitoring with Docker containers
-2. Automating infrastructure deployment using Puppet
-3. Configuring Grafana dashboards for real-time visualization
-
----
-
-# Learnings
-
-* Implementation of Monitoring-as-Code
-* CI/CD automation using Jenkins
-* Containerization using Docker
-* Infrastructure automation practices
-* Practical implementation of Monitoring-as-Code
-* CI/CD pipeline automation using Jenkins
-* Containerized monitoring infrastructure
-* Infrastructure as Code using Puppet
-
----
-
-# Acknowledgments
-
-Course Instructor: **Mr. Jay Shankar Sharma**
-
-Open-source tools and DevOps community resources.
-Reference materials and open-source documentation.
-
----
-
-# Contact
-
-**Student:** Rishika Agrawal
-
-**Email:** Rishika.23fe10cse00026@muj.manipal.edu
-
-**GitHub:** https://github.com/rishikaagrawal123
-Student: **Rishika Agrawal**
+**Rishika Agrawal**
 GitHub: https://github.com/rishikaagrawal123
+
+---
